@@ -130,11 +130,21 @@ router.beforeEach((to, from, next) => {
 })
 
 router.beforeEach(async (to) => {
-    if (
-        to.path == '/'
-    ) {
+    if (to.path == '/') {
         return { path: '/Home' }
     }
 })
+
+// router.beforeEach(async (to) => {
+//     if (to.path == '/login') {
+//         return {
+//             path : 'Login',
+//             component: Login,
+//             props: {
+//                 bootstrapcss : "test",
+//             },
+//         }
+//     }
+// })
 
 export default router;
