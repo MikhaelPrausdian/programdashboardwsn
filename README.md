@@ -1,4 +1,4 @@
-# vue-dashboardshms
+# vue-tailwind-sidebar
 
 ## Project setup
 ```
