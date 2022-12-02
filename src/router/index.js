@@ -32,7 +32,7 @@ import CustomerList from '../pages/SuperAdmin/Components/Customer/CustomerList';
 import SUProfil from '../pages/ProfileContent';
 
 // testing halaman
-// import ChartTest from '../pages/SuperAdmin/Components/Home/ChartComponent';
+import ApiTest from '../components/TestingAPI';
 
 const routes = [
     {
@@ -116,7 +116,12 @@ const routes = [
         name: 'Register',
         path: '/Register',
         component: Register,
-    }
+    },
+    {
+        name: 'Testing',
+        path: '/testing',
+        component: ApiTest,
+    },
 ];
 
 const router = new createRouter({
