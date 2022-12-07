@@ -136,7 +136,7 @@ router.beforeEach((to, from, next) => {
 
 router.beforeEach(async (to) => {
     if (to.path == '/') {
-        return { path: '/Home' }
+        return { path: '/Login' }
     }
 })
 
