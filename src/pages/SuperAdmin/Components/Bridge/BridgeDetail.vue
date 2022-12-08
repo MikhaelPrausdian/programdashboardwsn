@@ -28,17 +28,39 @@
                 edit
             </router-link>
         </div>
-        <div class="">
+        <div class="" v-for="value in apilistDetail" :key="value.id">
             <div class="flex justify-center">
                 <img class="rounded-lg shadow-lg" src="../../../../assets/BridgePict/BridgeDummy.jpg" alt="">
             </div>
             <div class="p-3">
-                <h1><b>Jembatan Cisomang</b></h1>
+                <h1><b>{{ value.name }}</b></h1>
             </div>
             <div class="pt-3 pb-3 pr-[15%] pl-[15%] text-justify">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quia repellendus quam nobis labore odio magnam maxime laudantium neque perferendis, mollitia esse, suscipit sapiente. Praesentium nulla magnam sed reiciendis dignissimos.</p>
+                <p>{{ value.description }}</p>
             </div>
             <div class="text-left pl-10">
+                <h1><b>Informasi</b></h1>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Alamat</td>
+                            <td class="p-1 pr-4 pl-3">:</td>
+                            <td>{{ value.detail_address }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bridge Status</td>
+                            <td class="p-1 pr-4 pl-3">:</td>
+                            <td>{{ value.bridge_status }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bridge Value</td>
+                            <td class="p-1 pr-4 pl-3">:</td>
+                            <td>{{ value.bridge_value }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-left pl-10 pt-3">
                 <h1><b>Spesifikasi Detail</b></h1>
                 <table>
                     <tbody>
@@ -62,7 +84,7 @@
             </div>
             <div class="text-left pt-3">
                 <h1 class="pl-10"><b>Bridge Monitoring System</b></h1>
-                <BridgeShape />
+                <!-- <BridgeShape /> -->
                 <div class="pl-10">
                     <table>
                         <tbody>
@@ -93,9 +115,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="frequency in frequencys" :key="frequency.id">
-                                <td class="p-1 border border-slate-700">{{ frequency.frequency }}</td>
-                                <td class="p-1 border border-slate-700">{{ frequency.time }}</td>
+                            <tr>
+                                <!-- <td class="p-1 border border-slate-700">{{ frequency.frequency }}</td>
+                                <td class="p-1 border border-slate-700">{{ frequency.time }}</td> -->
                             </tr>
                         </tbody>
                     </table>
@@ -113,11 +135,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="capacity in capacitys" :key="capacity.id">
+                            <!-- <tr v-for="capacity in capacitys" :key="capacity.id">
                                 <td class="p-1 border border-slate-700">{{ capacity.wim1 }}</td>
                                 <td class="p-1 border border-slate-700">{{ capacity.wim2 }}</td>
                                 <td class="p-1 border border-slate-700">{{ capacity.speed }}</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -127,32 +149,31 @@
 </template>
 
 <script>
-import BridgeShape from './BridgeShape.vue'
+// import BridgeShape from './BridgeShape.vue'
+import axios from "axios";
+
+
 
 export default {
-    components: {
-        BridgeShape,
-    },
-    data() {
-        return {
-            frequencys: [
-                {id: 0, frequency: "27,48", time: "2020/02/05  15:34:27"},
-                {id: 1, frequency: "27,48", time: "2020/02/05  15:34:27"},
-                {id: 2, frequency: "27,48", time: "2020/02/05  15:34:27"},
-                {id: 3, frequency: "27,48", time: "2020/02/05  15:34:27"},
-                {id: 4, frequency: "27,48", time: "2020/02/05  15:34:27"},
-                {id: 5, frequency: "27,48", time: "2020/02/05  15:34:27"},
-            ],
-            capacitys: [
-                {id: 0, wim1: "1298", wim2: "2366", speed: "0,5673"},
-                {id: 1, wim1: "1298", wim2: "2366", speed: "0,5673"},
-                {id: 2, wim1: "1298", wim2: "2366", speed: "0,5673"},
-                {id: 3, wim1: "1298", wim2: "2366", speed: "0,5673"},
-                {id: 4, wim1: "1298", wim2: "2366", speed: "0,5673"},
-                {id: 5, wim1: "1298", wim2: "2366", speed: "0,5673"},
-            ]
-        }
-    }
+    data(){
+            return {
+                apilistDetail: [],
+            }
+        },
+        mounted(){
+            var url = window.location.pathname;
+            var id = url.substring(url.lastIndexOf('/') + 1);
+
+            let urlBE = `${process.env.VUE_APP_URL_API}/bridge/getBridgeById/${id}`
+
+            axios
+            .get(urlBE)
+            .then(response => {
+                this.apilistDetail = [response.data]
+                console.log(response.data)
+            })
+            .catch(error => console.log(error))
+        },
 }
 </script>
 

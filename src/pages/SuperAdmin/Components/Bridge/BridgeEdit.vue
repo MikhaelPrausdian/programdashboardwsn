@@ -53,9 +53,27 @@
 </template>
 
 <script>
+export default {
+        data(){
+            return {
+                apilist: [],
+            }
+        },
+        methods: {
+            
+        },
+        mounted(){
+            // let url = `${process.env.VUE_APP_URL_API}/bridge/getAllBridge`
 
+            console.log("edit")
+            // axios
+            // .get(url)
+            // .then(response => (this.apilist = response.data))
+            // .catch(error => console.log(error))
+        },
+    }
 </script>
-
+    
 <style>
 
 </style>

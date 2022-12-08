@@ -8,9 +8,7 @@
         </div>
         <div class="flex items-center justify-end">
             <div class="">
-                <a href="" class="text-white bg-blue-300 hover:bg-blue-800 font-medium rounded-full text-sm px-3 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                    <font-awesome-icon icon="fa-solid fa-plus" />
-                    Add Bridge</a>
+                <router-link :to="('/Bridge/Create')" name="id" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add Bridge</router-link>
             </div>
             <div class="w-[300px] flex justify-end pl-2">
                 <!-- Search bar -->
@@ -48,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="bridge in bridges" :key="bridge.id" class="bg-white border-b text-black">
+                <tr v-for="bridge in apilist" :key="bridge.id" class="bg-white border-b text-black">
                     <th scope="row" class="py-4 px-6 font-medium whitespace-nowrap">
                         {{ bridge.id+1 }}
                     </th>
@@ -56,13 +54,13 @@
                         {{ bridge.name }}
                     </td>
                     <td class="py-4 px-6">
-                        {{ bridge.lokasi }}
+                        {{ bridge.detail_address }}
                     </td>
                     <td class="py-4 px-8">
-                        {{ bridge.rating }}
+                        {{ bridge.bridge_status }}
                     </td>
                     <td class="py-2 px-3">
-                        <router-link to="/Bridge/Detail" name="id" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Detail</router-link>
+                        <router-link :to="('/Bridge/Detail/' + bridge.id)" name="id" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Detail</router-link>
                     </td>
                 </tr>
             </tbody>
@@ -71,31 +69,55 @@
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            bridges: [
-                {id: 0, name: "Jembatan Cisomang", lokasi: "Jawa Barat", rating: "9"},
-                {id: 1, name: "Jembatan Pasupati", lokasi: "Jawa Tengah", rating: "7"},
-                {id: 2, name: "Jembatan Ampera", lokasi: "Jawa Timur", rating: "8"},
-                {id: 3, name: "Jembatan Suramadu", lokasi: "Kalimantan", rating: "4"},
-                {id: 4, name: "Jembatan Barito", lokasi: "Sumatara Barat", rating: "8"},
-                {id: 5, name: "Jembatan Merah Putih", lokasi: "Sulawesi Utara", rating: "8"},
-                {id: 6, name: "Jembatan 5 Barelang", lokasi: "Jayapura", rating: "8"},
-                {id: 7, name: "Jembatan Tengku Agung", lokasi: "Nusa Tenggara Barat", rating: "6"},
-                {id: 8, name: "Jembatan Marjuwana", lokasi: "Nusa Tenggara Timur", rating: "7"},
-                {id: 9, name: "Jembatan Suropati", lokasi: "Banten", rating: "8"},
-                {id: 10, name: "Jembatan Kemang", lokasi: "Jakarta", rating: "9"},
-                {id: 11, name: "Jembatan Bangka", lokasi: "Sumatra Selatan", rating: "8"},
-                {id: 12, name: "Jembatan 3 Putri", lokasi: "Sumatra Barat", rating: "8"},
-                {id: 13, name: "Jembatan Keder", lokasi: "Jawa Barat", rating: "7"},
-                {id: 14, name: "Jembatan Kayu", lokasi: "Jawa Barat", rating: "9"},
-                {id: 15, name: "Jembatan Curam", lokasi: "Jawa Barat", rating: "7"},
-                {id: 16, name: "Jembatan Jatuh", lokasi: "Jawa Timur", rating: "5"},
-            ]
-        }
+    import axios from "axios";
+    // import BridgeShape from './BridgeShape.vue'
+    
+
+
+    export default {
+        data(){
+            return {
+                apilist: [],
+            }
+        },
+        methods: {
+            
+        },
+        mounted(){
+            let url = `${process.env.VUE_APP_URL_API}/bridge/getAllBridge`
+
+            console.log(url)
+            axios
+            .get(url)
+            .then(response => (this.apilist = response.data))
+            .catch(error => console.log(error))
+        },
     }
-}
+// export default {
+//     data() {
+//         return {
+//             bridges: [
+//                 {id: 0, name: "Jembatan Cisomang", lokasi: "Jawa Barat", rating: "9"},
+//                 {id: 1, name: "Jembatan Pasupati", lokasi: "Jawa Tengah", rating: "7"},
+//                 {id: 2, name: "Jembatan Ampera", lokasi: "Jawa Timur", rating: "8"},
+//                 {id: 3, name: "Jembatan Suramadu", lokasi: "Kalimantan", rating: "4"},
+//                 {id: 4, name: "Jembatan Barito", lokasi: "Sumatara Barat", rating: "8"},
+//                 {id: 5, name: "Jembatan Merah Putih", lokasi: "Sulawesi Utara", rating: "8"},
+//                 {id: 6, name: "Jembatan 5 Barelang", lokasi: "Jayapura", rating: "8"},
+//                 {id: 7, name: "Jembatan Tengku Agung", lokasi: "Nusa Tenggara Barat", rating: "6"},
+//                 {id: 8, name: "Jembatan Marjuwana", lokasi: "Nusa Tenggara Timur", rating: "7"},
+//                 {id: 9, name: "Jembatan Suropati", lokasi: "Banten", rating: "8"},
+//                 {id: 10, name: "Jembatan Kemang", lokasi: "Jakarta", rating: "9"},
+//                 {id: 11, name: "Jembatan Bangka", lokasi: "Sumatra Selatan", rating: "8"},
+//                 {id: 12, name: "Jembatan 3 Putri", lokasi: "Sumatra Barat", rating: "8"},
+//                 {id: 13, name: "Jembatan Keder", lokasi: "Jawa Barat", rating: "7"},
+//                 {id: 14, name: "Jembatan Kayu", lokasi: "Jawa Barat", rating: "9"},
+//                 {id: 15, name: "Jembatan Curam", lokasi: "Jawa Barat", rating: "7"},
+//                 {id: 16, name: "Jembatan Jatuh", lokasi: "Jawa Timur", rating: "5"},
+//             ]
+//         }
+//     }
+// }
 
 </script>
 
