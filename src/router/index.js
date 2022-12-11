@@ -15,11 +15,13 @@ import BridgeList from "../pages/SuperAdmin/Components/Bridge/BridgeList";
 import BridgeDetail from "../pages/SuperAdmin/Components/Bridge/BridgeDetail";
 import BridgeEdit from "../pages/SuperAdmin/Components/Bridge/BridgeEdit";
 import CreateBridge from "../pages/SuperAdmin/Components/Bridge/CreateBridge";
+import AssignBridge from "../pages/SuperAdmin/Components/Bridge/AssignBridge";
 
 // import Operator Component
 import OperatorList from "../pages/SuperAdmin/Components/Operator/OperatorList";
 import OperatorDetail from "../pages/SuperAdmin/Components/Operator/OperatorDetail";
 import OperatorEdit from "../pages/SuperAdmin/Components/Operator/OperatorEdit";
+import OperatorCreate from "../pages/SuperAdmin/Components/Operator/OperatorCreate";
 
 // import Maintenance Component
 import MaintenanceList from "../pages/SuperAdmin/Components/Maintenance/MaintenanceList";
@@ -28,6 +30,15 @@ import MaintenanceEdit from "../pages/SuperAdmin/Components/Maintenance/Maintena
 
 // import Customer Component
 import CustomerList from "../pages/SuperAdmin/Components/Customer/CustomerList";
+import CreateCustomer from "../pages/SuperAdmin/Components/Customer/CreateCustomer";
+import DetailCustomer from "../pages/SuperAdmin/Components/Customer/DetailCustomer";
+
+// import User Perusahaan Component
+import ListUser from "../pages/AdminCustomer/User Perusahaan/ListUser";
+import CreateUserPerusahaan from "../pages/AdminCustomer/User Perusahaan/CreateUserPerusahaan";
+
+// import Keluhan Component
+import CreateKeluhan from "../pages/UserPerusahaan/CreateKeluhan";
 
 // profile superadmin content
 import SUProfil from "../pages/ProfileContent";
@@ -45,6 +56,11 @@ const routes = [
         name: "SuperAdmin Dashboard",
         path: "/Home",
         component: HomeDashboard,
+      },
+      {
+        name: "Create Customer",
+        path: "/Customer/Create",
+        component: CreateCustomer,
       },
       {
         name: "Daftar Jembatan",
@@ -67,9 +83,19 @@ const routes = [
         component: CreateBridge,
       },
       {
+        name: "Assign Bridge",
+        path: "/Bridge/AssignBridge/:id",
+        component: AssignBridge,
+      },
+      {
         name: "Daftar Operator",
         path: "/Operator",
         component: OperatorList,
+      },
+      {
+        name: "Create Operator",
+        path: "/Operator/Create",
+        component: OperatorCreate,
       },
       {
         name: "Detail Operator",
@@ -80,6 +106,11 @@ const routes = [
         name: "Edit Operator",
         path: "/Operator/Edit",
         component: OperatorEdit,
+      },
+      {
+        name: "Create Keluhan",
+        path: "/keluhan/create",
+        component: CreateKeluhan,
       },
       {
         name: "Daftar Maintenance",
@@ -102,9 +133,24 @@ const routes = [
         component: CustomerList,
       },
       {
+        name: "Detail Customer",
+        path: "/Customer/Detail/:id",
+        component: DetailCustomer,
+      },
+      {
         name: "Profile",
         path: "/Profile",
         component: SUProfil,
+      },
+      {
+        name: "List User",
+        path: "/user",
+        component: ListUser,
+      },
+      {
+        name: "Create User Perusahaan",
+        path: "/UserPerusahaan/create",
+        component: CreateUserPerusahaan,
       },
     ],
   },

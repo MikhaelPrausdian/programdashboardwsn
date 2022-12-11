@@ -8,7 +8,7 @@
         </div>
         <div class="flex items-center justify-end">
             <div class="">
-                <router-link :to="('/Bridge/Create')" name="id" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add Bridge</router-link>
+                <router-link :to="('/Bridge/Create')" v-if="role !== 'User Perusahaan'" name="id" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add Bridge</router-link>
             </div>
             <div class="w-[300px] flex justify-end pl-2">
                 <!-- Search bar -->
@@ -40,6 +40,9 @@
                     <th scope="col" class="py-3 px-6">
                         Rating
                     </th>
+                    <th scope="col" class="py-3 px-6">
+                        Assigned
+                    </th>
                     <th scope="col" class="py-3 px-3">
                         Action
                     </th>
@@ -55,6 +58,12 @@
                     </td>
                     <td class="py-4 px-6">
                         {{ bridge.detail_address }}
+                    </td>
+                    <td v-if="bridge.bridgeAssigned !== null">
+                        <span class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800" >Assigned</span>
+                    </td>
+                    <td v-else>
+                        <router-link :to="('/Bridge/AssignBridge/' + bridge.id)" name="id" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Not Assigned</router-link>
                     </td>
                     <td class="py-4 px-8">
                         {{ bridge.bridge_status }}
@@ -78,15 +87,21 @@
         data(){
             return {
                 apilist: [],
+                role: localStorage.getItem("role")
             }
         },
         methods: {
             
         },
         mounted(){
-            let url = `${process.env.VUE_APP_URL_API}/bridge/getAllBridge`
+            let url = ''
 
-            console.log(url)
+            if(localStorage.getItem("role") == 'Admin Customer' || localStorage.getItem("role") == 'User Perusahaan'){
+                url = `${process.env.VUE_APP_URL_API}/bridge/getAssignedBridge/${localStorage.getItem("id_perusahaan")}`
+            }else{
+                url = `${process.env.VUE_APP_URL_API}/bridge/getAllBridge`
+            }
+
             axios
             .get(url)
             .then(response => (this.apilist = response.data))

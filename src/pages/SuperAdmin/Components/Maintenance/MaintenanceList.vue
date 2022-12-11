@@ -8,9 +8,7 @@
         </div>
         <div class="flex items-center justify-end">
             <div class="">
-                <a href="" class="text-white bg-blue-300 hover:bg-blue-800 font-medium rounded-full text-sm px-3 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                    <font-awesome-icon icon="fa-solid fa-plus" />
-                    Add Maintenance</a>
+                <router-link :to="('/keluhan/create')" v-if="role !== 'Superadmin'" name="id" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add Bridge</router-link>
             </div>
             <div class="w-[300px] flex justify-end pl-2">
                 <!-- Search bar -->

@@ -10,7 +10,7 @@
             <div class="h-[calc(100vh-100px)] pb-[20px]">
                 <div class="flex felx-col justify-between h-full">
                     <div class="px-[20px] flex flex-col justify-between space-y-[10px]">
-                        <div clas="h-[calc(100%-50px)]" v-if="role == 'Superadmin'">
+                        <div clas="h-[calc(100%-50px)]">
                             <router-link to="/Home" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
                                 <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-house" />
                                 Home
@@ -18,54 +18,10 @@
                             <router-link to="/Bridge" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
                                 <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-bridge" />
                                 Daftar Jembatan
-                            </router-link>
-                            <router-link to="/Operator" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-users-gear" />
-                                Daftar Operator
-                            </router-link>
-                            <router-link to="/Maintenance" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-screwdriver-wrench" />
-                                Daftar Keluhan
                             </router-link>
                             <router-link to="/Customer" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
                                 <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-user" />
-                                Daftar Customer
-                            </router-link>
-                        </div>
-                        <div clas="h-[calc(100%-50px)]" v-else-if="role == 'Admin Customer'">
-                            <router-link to="/Home" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-house" />
-                                Home
-                            </router-link>
-                            <router-link to="/Bridge" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-bridge" />
-                                Daftar Jembatan
-                            </router-link>
-                            <router-link to="/Maintenance" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-screwdriver-wrench" />
-                                Daftar Maintenance
-                            </router-link>
-                            <router-link to="/user" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-user" />
-                                Daftar User Perusahaan
-                            </router-link>
-                        </div>
-                        <div clas="h-[calc(100%-50px)]" v-else-if="role == 'User Perusahaan'">
-                            <router-link to="/Home" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-house" />
-                                Home
-                            </router-link>
-                            <router-link to="/Bridge" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-bridge" />
-                                Daftar Jembatan
-                            </router-link>
-                            <router-link to="/Maintenance" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-screwdriver-wrench" />
-                                Daftar Maintenance
-                            </router-link>
-                            <router-link to="/user" class="inline-flex relative items-center py-[15px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-blue-700 hover:text-white  transition duration-400 ease-in-out">
-                                <font-awesome-icon class="mr-2 w-[25px] h-[25px] fill-current" icon="fa-solid fa-user" />
-                                Daftar User Perusahaan
+                                Daftar User
                             </router-link>
                         </div>
                         <div class="h-[50px]">
@@ -105,8 +61,8 @@
                     <div class="w-[500px] ">
                         <div class="cursor-pointer flex items-center justify-end space-x-4" @click="toggleDrop">
                             <div class="font-semibold text-right">
-                                <div class="text-[#548fd6]"><b>Welcome, {{ nama }}!</b></div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">{{ role }}</div>
+                                <div class="text-[#548fd6]"><b>Welcome, Tester!</b></div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">SuperAdmin</div>
                             </div>
                             <img class="w-10 h-10 rounded-full border-2 border-gray-50" src="../../assets/SuperAdmin.png" alt="">
                         </div>
@@ -148,8 +104,6 @@ export default {
         return {
             showDropDown: false,
             showSide: true,
-            role: localStorage.getItem("role"),
-            nama: localStorage.getItem("nama")
         }
     },
     methods: {
