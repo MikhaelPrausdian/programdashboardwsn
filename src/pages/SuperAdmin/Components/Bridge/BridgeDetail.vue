@@ -110,12 +110,16 @@
                     <table class="w-full rounded-lg border-collapse border border-slate-500">
                         <thead class="text-white bg-gray-400">
                             <tr>
-                                <th class="">Frekuensi</th>
-                                <th class="">Waktu</th>
+                                <th class="">Amplitudos</th>
+                                <th class="">Displacement</th>
+                                <th class="">Frequencies</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td>0.032</td>
+                                <td>0.02</td>
+                                <td>21.875</td>
                                 <!-- <td class="p-1 border border-slate-700">{{ frequency.frequency }}</td>
                                 <td class="p-1 border border-slate-700">{{ frequency.time }}</td> -->
                             </tr>

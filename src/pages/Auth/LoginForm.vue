@@ -17,9 +17,9 @@
                     <div class="pb-2 mt-5">
                         <button @click="login" class="rounded-full w-[50%] text-lg text-white" type="submit" style="background: #5095E9; font-family: 'Poppins', sans-serif;">Log in</button>
                     </div>
-                    <div class="pb-2">
+                    <!-- <div class="pb-2">
                         <a class="rounded-full w-[50%]" href="" type="" style="border-color: #5095E9; background: white; color: #5095E9; font-family: 'Poppins', sans-serif;">Register</a>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
